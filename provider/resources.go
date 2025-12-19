@@ -20,11 +20,11 @@ import (
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
+	datafy "github.com/datafy-io/terraform-provider-datafy/shim" // Import the upstream provider
+	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-	datafy "github.com/datafy-io/terraform-provider-datafy/provider" // Import the upstream provider
 
 	"github.com/braveokafor/pulumi-datafy/provider/pkg/version"
 )
@@ -105,7 +105,7 @@ func Provider() tfbridge.ProviderInfo {
 		// - "github.com/hashicorp/terraform-plugin-framework/provider".Provider (for plugin-framework)
 		//
 		//nolint:lll
-		P: shimv2.NewProvider(datafy.New(version.Version)()),
+		P: pf.ShimProvider(datafy.NewProvider()),
 
 		Name:    "datafy",
 		Version: version.Version,
