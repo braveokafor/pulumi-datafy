@@ -1,55 +1,26 @@
 # Datafy Resource Provider
 
-The Datafy Resource Provider lets you manage [Datafy](http://example.com) resources.
+The Datafy Resource Provider lets you manage [Datafy](https://www.datafy.com) resources.
 
 ## Installing
 
-This package is available for several languages/platforms:
-
-### Node.js (JavaScript/TypeScript)
-
-To use from JavaScript or TypeScript in Node.js, install using either `npm`:
-
-```bash
-npm install @pulumi/datafy
-```
-
-or `yarn`:
-
-```bash
-yarn add @pulumi/datafy
-```
-
-### Python
-
-To use from Python, install using `pip`:
-
-```bash
-pip install pulumi_datafy
-```
 
 ### Go
 
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/pulumi/pulumi-datafy/sdk/go/...
+go get github.com/braveokafor/pulumi-datafy/sdk/go/datafy
 ```
 
-### .NET
+Then import in your code:
 
-To use from .NET, install using `dotnet add package`:
-
-```bash
-dotnet add package Pulumi.Datafy
+```go
+import "github.com/braveokafor/pulumi-datafy/sdk/go/datafy"
 ```
 
 ## Configuration
 
-The following configuration points are available for the `datafy` provider:
-
-- `datafy:region` (environment: `DATAFY_REGION`) - the region in which to deploy resources
+See [pkg.go.dev](https://pkg.go.dev/github.com/braveokafor/pulumi-datafy/sdk)
 
 ## Reference
-
-For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/datafy/api-docs/).
