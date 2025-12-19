@@ -5,18 +5,38 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export { GetDataSourceArgs, GetDataSourceResult, GetDataSourceOutputArgs } from "./getDataSource";
-export const getDataSource: typeof import("./getDataSource").getDataSource = null as any;
-export const getDataSourceOutput: typeof import("./getDataSource").getDataSourceOutput = null as any;
-utilities.lazyLoad(exports, ["getDataSource","getDataSourceOutput"], () => require("./getDataSource"));
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
+
+export { GetAccountArgs, GetAccountResult, GetAccountOutputArgs } from "./getAccount";
+export const getAccount: typeof import("./getAccount").getAccount = null as any;
+export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
+
+export { GetRoleArnArgs, GetRoleArnResult, GetRoleArnOutputArgs } from "./getRoleArn";
+export const getRoleArn: typeof import("./getRoleArn").getRoleArn = null as any;
+export const getRoleArnOutput: typeof import("./getRoleArn").getRoleArnOutput = null as any;
+utilities.lazyLoad(exports, ["getRoleArn","getRoleArnOutput"], () => require("./getRoleArn"));
+
+export { GetTokenArgs, GetTokenResult, GetTokenOutputArgs } from "./getToken";
+export const getToken: typeof import("./getToken").getToken = null as any;
+export const getTokenOutput: typeof import("./getToken").getTokenOutput = null as any;
+utilities.lazyLoad(exports, ["getToken","getTokenOutput"], () => require("./getToken"));
 
 export * from "./provider";
 import { Provider } from "./provider";
 
-export { ResourceArgs, ResourceState } from "./resource";
-export type Resource = import("./resource").Resource;
-export const Resource: typeof import("./resource").Resource = null as any;
-utilities.lazyLoad(exports, ["Resource"], () => require("./resource"));
+export { RoleArnArgs, RoleArnState } from "./roleArn";
+export type RoleArn = import("./roleArn").RoleArn;
+export const RoleArn: typeof import("./roleArn").RoleArn = null as any;
+utilities.lazyLoad(exports, ["RoleArn"], () => require("./roleArn"));
+
+export { TokenArgs, TokenState } from "./token";
+export type Token = import("./token").Token;
+export const Token: typeof import("./token").Token = null as any;
+utilities.lazyLoad(exports, ["Token"], () => require("./token"));
 
 
 // Export sub-modules:
@@ -34,18 +54,24 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "xyz:index/resource:Resource":
-                return new Resource(name, <any>undefined, { urn })
+            case "datafy:index/account:Account":
+                return new Account(name, <any>undefined, { urn })
+            case "datafy:index/roleArn:RoleArn":
+                return new RoleArn(name, <any>undefined, { urn })
+            case "datafy:index/token:Token":
+                return new Token(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("xyz", "index/resource", _module)
-pulumi.runtime.registerResourcePackage("xyz", {
+pulumi.runtime.registerResourceModule("datafy", "index/account", _module)
+pulumi.runtime.registerResourceModule("datafy", "index/roleArn", _module)
+pulumi.runtime.registerResourceModule("datafy", "index/token", _module)
+pulumi.runtime.registerResourcePackage("datafy", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
-        if (type !== "pulumi:providers:xyz") {
+        if (type !== "pulumi:providers:datafy") {
             throw new Error(`unknown provider type ${type}`);
         }
         return new Provider(name, <any>undefined, { urn });

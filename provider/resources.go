@@ -15,18 +15,16 @@
 package datafy
 
 import (
-	"path"
-
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
+	"path"
 
+	"github.com/braveokafor/pulumi-datafy/provider/pkg/version"
 	datafy "github.com/datafy-io/terraform-provider-datafy/shim" // Import the upstream provider
 	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-
-	"github.com/braveokafor/pulumi-datafy/provider/pkg/version"
 )
 
 // all of the token components used below.

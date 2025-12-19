@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Xyz
+namespace Pulumi.Datafy
 {
     public static class Config
     {
@@ -30,16 +30,26 @@ namespace Pulumi.Xyz
             }
         }
 
-        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("xyz");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("datafy");
 
-        private static readonly __Value<Pulumi.Xyz.Region.Region?> _region = new __Value<Pulumi.Xyz.Region.Region?>(() => __config.GetObject<Pulumi.Xyz.Region.Region>("region"));
+        private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint"));
         /// <summary>
-        /// A region which should be used.
+        /// Datafy endpoint. Can also be configured using the `DATAFY_ENDPOINT` environment variable. Defaults to `https://api.datafy.io`.
         /// </summary>
-        public static Pulumi.Xyz.Region.Region? Region
+        public static string? Endpoint
         {
-            get => _region.Get();
-            set => _region.Set(value);
+            get => _endpoint.Get();
+            set => _endpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
+        /// <summary>
+        /// Datafy token. Can also be configured using the `DATAFY_TOKEN` environment variable.
+        /// </summary>
+        public static string? Token
+        {
+            get => _token.Get();
+            set => _token.Set(value);
         }
 
     }
