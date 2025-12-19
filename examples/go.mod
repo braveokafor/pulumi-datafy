@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/examples
+module github.com/braveokafor/pulumi-datafy/examples
 
 go 1.24.7
 
