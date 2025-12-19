@@ -1,14 +1,16 @@
 {
-    "name": "xyz",
-    "description": "A Pulumi package for creating and managing xyz cloud resources.",
+    "name": "datafy",
+    "displayName": "Datafy",
+    "description": "A Pulumi package for creating and managing datafy cloud resources.",
     "keywords": [
-        "xyz",
+        "datafy",
         "category/cloud"
     ],
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`xyz` Terraform Provider](https://github.com/terraform-providers/terraform-provider-xyz).",
-    "repository": "https://github.com/pulumi/pulumi-xyz",
+    "attribution": "This Pulumi package is based on the [`datafy` Terraform Provider](https://github.com/datafy-io/terraform-provider-datafy).",
+    "repository": "https://github.com/braveokafor/pulumi-datafy",
+    "logoUrl": "https://www.datafy.com/_next/static/media/datafyWhite.50dd47a1.svg",
     "publisher": "Pulumi",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -22,20 +24,20 @@
             "respectSchemaVersion": true
         },
         "go": {
-            "importBasePath": "github.com/pulumi/pulumi-xyz/sdk/go/xyz",
+            "importBasePath": "github.com/braveokafor/pulumi-datafy/sdk/go/datafy",
             "generateResourceContainerTypes": true,
             "generateExtraInputTypes": true,
             "respectSchemaVersion": true
         },
         "nodejs": {
-            "packageDescription": "A Pulumi package for creating and managing xyz cloud resources.",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-xyz)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-xyz` repo](https://github.com/pulumi/pulumi-xyz/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-xyz` repo](https://github.com/terraform-providers/terraform-provider-xyz/issues).",
+            "packageDescription": "A Pulumi package for creating and managing datafy cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/datafy-io/terraform-provider-datafy)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-datafy` repo](https://github.com/braveokafor/pulumi-datafy/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-datafy` repo](https://github.com/datafy-io/terraform-provider-datafy/issues).",
             "compatibility": "tfbridge20",
             "disableUnionOutputTypes": true,
             "respectSchemaVersion": true
         },
         "python": {
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-xyz)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-xyz` repo](https://github.com/pulumi/pulumi-xyz/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-xyz` repo](https://github.com/terraform-providers/terraform-provider-xyz/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/datafy-io/terraform-provider-datafy)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-datafy` repo](https://github.com/braveokafor/pulumi-datafy/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-datafy` repo](https://github.com/datafy-io/terraform-provider-datafy/issues).",
             "compatibility": "tfbridge20",
             "respectSchemaVersion": true,
             "pyproject": {
@@ -45,15 +47,19 @@
     },
     "config": {
         "variables": {
-            "region": {
+            "endpoint": {
                 "type": "string",
-                "$ref": "#/types/xyz:region/region:Region",
-                "description": "A region which should be used."
+                "description": "Datafy endpoint. Can also be configured using the `DATAFY_ENDPOINT` environment variable. Defaults to `https://api.datafy.io`."
+            },
+            "token": {
+                "type": "string",
+                "description": "Datafy token. Can also be configured using the `DATAFY_TOKEN` environment variable.",
+                "secret": true
             }
         }
     },
     "types": {
-        "xyz:region/region:Region": {
+        "datafy:region/region:Region": {
             "type": "string",
             "enum": [
                 {
@@ -68,45 +74,227 @@
         }
     },
     "provider": {
-        "description": "The provider type for the xyz package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "description": "The provider type for the datafy package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
-            "region": {
+            "endpoint": {
                 "type": "string",
-                "$ref": "#/types/xyz:region/region:Region",
-                "description": "A region which should be used."
+                "description": "Datafy endpoint. Can also be configured using the `DATAFY_ENDPOINT` environment variable. Defaults to `https://api.datafy.io`."
+            },
+            "token": {
+                "type": "string",
+                "description": "Datafy token. Can also be configured using the `DATAFY_TOKEN` environment variable.",
+                "secret": true
             }
         },
         "inputProperties": {
-            "region": {
+            "endpoint": {
                 "type": "string",
-                "$ref": "#/types/xyz:region/region:Region",
-                "description": "A region which should be used."
+                "description": "Datafy endpoint. Can also be configured using the `DATAFY_ENDPOINT` environment variable. Defaults to `https://api.datafy.io`."
+            },
+            "token": {
+                "type": "string",
+                "description": "Datafy token. Can also be configured using the `DATAFY_TOKEN` environment variable.",
+                "secret": true
             }
         },
         "methods": {
-            "terraformConfig": "pulumi:providers:xyz/terraformConfig"
+            "terraformConfig": "pulumi:providers:datafy/terraformConfig"
         }
     },
     "resources": {
-        "xyz:index/resource:Resource": {
+        "datafy:index/account:Account": {
+            "description": "Create a Datafy account\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as datafy from \"@pulumi/datafy\";\n\nconst example = new datafy.Account(\"example\", {name: \"example-account\"});\n```\n```python\nimport pulumi\nimport pulumi_datafy as datafy\n\nexample = datafy.Account(\"example\", name=\"example-account\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Datafy = Pulumi.Datafy;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Datafy.Account(\"example\", new()\n    {\n        Name = \"example-account\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/braveokafor/pulumi-datafy/sdk/go/datafy\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := datafy.NewAccount(ctx, \"example\", \u0026datafy.AccountArgs{\n\t\t\tName: pulumi.String(\"example-account\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.datafy.Account;\nimport com.pulumi.datafy.AccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Account(\"example\", AccountArgs.builder()\n            .name(\"example-account\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: datafy:Account\n    properties:\n      name: example-account\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
-                "sampleAttribute": {
+                "name": {
                     "type": "string",
-                    "description": "Sample attribute."
+                    "description": "The name of the Datafy account.\n"
+                },
+                "parentAccountId": {
+                    "type": "string",
+                    "description": "The unique identifier of the parent Datafy account\n"
                 }
             },
+            "required": [
+                "name",
+                "parentAccountId"
+            ],
             "inputProperties": {
-                "sampleAttribute": {
+                "name": {
                     "type": "string",
-                    "description": "Sample attribute."
+                    "description": "The name of the Datafy account.\n"
                 }
             },
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering Resource resources.\n",
+                "description": "Input properties used for looking up and filtering Account resources.\n",
                 "properties": {
-                    "sampleAttribute": {
+                    "name": {
                         "type": "string",
-                        "description": "Sample attribute."
+                        "description": "The name of the Datafy account.\n"
+                    },
+                    "parentAccountId": {
+                        "type": "string",
+                        "description": "The unique identifier of the parent Datafy account\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "datafy:index/roleArn:RoleArn": {
+            "description": "Manages a Datafy role ARN, which represents an AWS IAM role associated with a Datafy account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as datafy from \"@pulumi/datafy\";\n\nconst example = new datafy.RoleArn(\"example\", {\n    accountId: \"5f19d868-64f2-4251-a98f-b19571d1f4e9\",\n    arn: \"arn:aws:iam::123456789012:role/example-role\",\n});\n```\n```python\nimport pulumi\nimport pulumi_datafy as datafy\n\nexample = datafy.RoleArn(\"example\",\n    account_id=\"5f19d868-64f2-4251-a98f-b19571d1f4e9\",\n    arn=\"arn:aws:iam::123456789012:role/example-role\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Datafy = Pulumi.Datafy;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Datafy.RoleArn(\"example\", new()\n    {\n        AccountId = \"5f19d868-64f2-4251-a98f-b19571d1f4e9\",\n        Arn = \"arn:aws:iam::123456789012:role/example-role\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/braveokafor/pulumi-datafy/sdk/go/datafy\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := datafy.NewRoleArn(ctx, \"example\", \u0026datafy.RoleArnArgs{\n\t\t\tAccountId: pulumi.String(\"5f19d868-64f2-4251-a98f-b19571d1f4e9\"),\n\t\t\tArn:       pulumi.String(\"arn:aws:iam::123456789012:role/example-role\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.datafy.RoleArn;\nimport com.pulumi.datafy.RoleArnArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new RoleArn(\"example\", RoleArnArgs.builder()\n            .accountId(\"5f19d868-64f2-4251-a98f-b19571d1f4e9\")\n            .arn(\"arn:aws:iam::123456789012:role/example-role\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: datafy:RoleArn\n    properties:\n      accountId: 5f19d868-64f2-4251-a98f-b19571d1f4e9\n      arn: arn:aws:iam::123456789012:role/example-role\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The unique identifier of the Datafy account.\n"
+                },
+                "arn": {
+                    "type": "string",
+                    "description": "The Amazon Resource Name (ARN) of the IAM role.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "arn"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The unique identifier of the Datafy account.\n"
+                },
+                "arn": {
+                    "type": "string",
+                    "description": "The Amazon Resource Name (ARN) of the IAM role.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "arn"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RoleArn resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The unique identifier of the Datafy account.\n"
+                    },
+                    "arn": {
+                        "type": "string",
+                        "description": "The Amazon Resource Name (ARN) of the IAM role.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "datafy:index/token:Token": {
+            "description": "Create a Datafy token, which represents an access token associated with a Datafy account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as datafy from \"@pulumi/datafy\";\n\nconst example = new datafy.Token(\"example\", {\n    accountId: \"79c406c5-7b64-43f2-ba76-9b01e74e3d90\",\n    description: \"Example token\",\n    ttl: \"60m\",\n    roleIds: [\n        \"role1\",\n        \"role2\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_datafy as datafy\n\nexample = datafy.Token(\"example\",\n    account_id=\"79c406c5-7b64-43f2-ba76-9b01e74e3d90\",\n    description=\"Example token\",\n    ttl=\"60m\",\n    role_ids=[\n        \"role1\",\n        \"role2\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Datafy = Pulumi.Datafy;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Datafy.Token(\"example\", new()\n    {\n        AccountId = \"79c406c5-7b64-43f2-ba76-9b01e74e3d90\",\n        Description = \"Example token\",\n        Ttl = \"60m\",\n        RoleIds = new[]\n        {\n            \"role1\",\n            \"role2\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/braveokafor/pulumi-datafy/sdk/go/datafy\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := datafy.NewToken(ctx, \"example\", \u0026datafy.TokenArgs{\n\t\t\tAccountId:   pulumi.String(\"79c406c5-7b64-43f2-ba76-9b01e74e3d90\"),\n\t\t\tDescription: pulumi.String(\"Example token\"),\n\t\t\tTtl:         pulumi.String(\"60m\"),\n\t\t\tRoleIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"role1\"),\n\t\t\t\tpulumi.String(\"role2\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.datafy.Token;\nimport com.pulumi.datafy.TokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Token(\"example\", TokenArgs.builder()\n            .accountId(\"79c406c5-7b64-43f2-ba76-9b01e74e3d90\")\n            .description(\"Example token\")\n            .ttl(\"60m\")\n            .roleIds(            \n                \"role1\",\n                \"role2\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: datafy:Token\n    properties:\n      accountId: 79c406c5-7b64-43f2-ba76-9b01e74e3d90\n      description: Example token\n      ttl: 60m\n      roleIds:\n        - role1\n        - role2\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The unique identifier of the Datafy account.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The time when the token was created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the token.\n"
+                },
+                "expires": {
+                    "type": "string",
+                    "description": "The time when the token will expire.\n"
+                },
+                "roleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of role IDs associated with the token.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "The secret value of the token.\n",
+                    "secret": true
+                },
+                "tokenId": {
+                    "type": "string",
+                    "description": "The unique identifier of the Datafy token.\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "The expiration time of the token.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "createdAt",
+                "expires",
+                "roleIds",
+                "secret",
+                "tokenId"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The unique identifier of the Datafy account.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the token.\n"
+                },
+                "roleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of role IDs associated with the token.\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "The expiration time of the token.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "roleIds"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Token resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The unique identifier of the Datafy account.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The time when the token was created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the token.\n"
+                    },
+                    "expires": {
+                        "type": "string",
+                        "description": "The time when the token will expire.\n"
+                    },
+                    "roleIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of role IDs associated with the token.\n"
+                    },
+                    "secret": {
+                        "type": "string",
+                        "description": "The secret value of the token.\n",
+                        "secret": true
+                    },
+                    "tokenId": {
+                        "type": "string",
+                        "description": "The unique identifier of the Datafy token.\n"
+                    },
+                    "ttl": {
+                        "type": "string",
+                        "description": "The expiration time of the token.\n"
                     }
                 },
                 "type": "object"
@@ -114,7 +302,152 @@
         }
     },
     "functions": {
-        "pulumi:providers:xyz/terraformConfig": {
+        "datafy:index/getAccount:getAccount": {
+            "description": "Retrieves a specific Datafy account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as datafy from \"@pulumi/datafy\";\n\nconst example = datafy.getAccount({\n    id: \"79c406c5-7b64-43f2-ba76-9b01e74e3d90\",\n});\n```\n```python\nimport pulumi\nimport pulumi_datafy as datafy\n\nexample = datafy.get_account(id=\"79c406c5-7b64-43f2-ba76-9b01e74e3d90\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Datafy = Pulumi.Datafy;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Datafy.GetAccount.Invoke(new()\n    {\n        Id = \"79c406c5-7b64-43f2-ba76-9b01e74e3d90\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/braveokafor/pulumi-datafy/sdk/go/datafy\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := datafy.LookupAccount(ctx, \u0026datafy.LookupAccountArgs{\n\t\t\tId: \"79c406c5-7b64-43f2-ba76-9b01e74e3d90\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.datafy.DatafyFunctions;\nimport com.pulumi.datafy.inputs.GetAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DatafyFunctions.getAccount(GetAccountArgs.builder()\n            .id(\"79c406c5-7b64-43f2-ba76-9b01e74e3d90\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: datafy:getAccount\n      arguments:\n        id: 79c406c5-7b64-43f2-ba76-9b01e74e3d90\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAccount.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAccount.\n",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the account.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the account.\n",
+                        "type": "string"
+                    },
+                    "parentAccountId": {
+                        "description": "The unique identifier of the parent account\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "parentAccountId"
+                ],
+                "type": "object"
+            }
+        },
+        "datafy:index/getRoleArn:getRoleArn": {
+            "description": "Retrieves a specific Datafy role ARN.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRoleArn.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The unique identifier of the Datafy account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRoleArn.\n",
+                "properties": {
+                    "accountId": {
+                        "description": "The unique identifier of the Datafy account.\n",
+                        "type": "string"
+                    },
+                    "arn": {
+                        "description": "The Amazon Resource Name (ARN) of the IAM role.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accountId",
+                    "arn",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "datafy:index/getToken:getToken": {
+            "description": "Retrieves a specific Datafy token.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as datafy from \"@pulumi/datafy\";\n\nconst example = datafy.getToken({\n    accountId: \"79c406c5-7b64-43f2-ba76-9b01e74e3d90\",\n    tokenId: \"7c4f5fcd-5a9c-4463-893a-9c2d09bf7bc6\",\n});\n```\n```python\nimport pulumi\nimport pulumi_datafy as datafy\n\nexample = datafy.get_token(account_id=\"79c406c5-7b64-43f2-ba76-9b01e74e3d90\",\n    token_id=\"7c4f5fcd-5a9c-4463-893a-9c2d09bf7bc6\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Datafy = Pulumi.Datafy;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Datafy.GetToken.Invoke(new()\n    {\n        AccountId = \"79c406c5-7b64-43f2-ba76-9b01e74e3d90\",\n        TokenId = \"7c4f5fcd-5a9c-4463-893a-9c2d09bf7bc6\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/braveokafor/pulumi-datafy/sdk/go/datafy\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := datafy.LookupToken(ctx, \u0026datafy.LookupTokenArgs{\n\t\t\tAccountId: \"79c406c5-7b64-43f2-ba76-9b01e74e3d90\",\n\t\t\tTokenId:   \"7c4f5fcd-5a9c-4463-893a-9c2d09bf7bc6\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.datafy.DatafyFunctions;\nimport com.pulumi.datafy.inputs.GetTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DatafyFunctions.getToken(GetTokenArgs.builder()\n            .accountId(\"79c406c5-7b64-43f2-ba76-9b01e74e3d90\")\n            .tokenId(\"7c4f5fcd-5a9c-4463-893a-9c2d09bf7bc6\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: datafy:getToken\n      arguments:\n        accountId: 79c406c5-7b64-43f2-ba76-9b01e74e3d90\n        tokenId: 7c4f5fcd-5a9c-4463-893a-9c2d09bf7bc6\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getToken.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The unique identifier of the Datafy account.\n"
+                    },
+                    "tokenId": {
+                        "type": "string",
+                        "description": "The unique identifier of the Datafy token.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "tokenId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getToken.\n",
+                "properties": {
+                    "accountId": {
+                        "description": "The unique identifier of the Datafy account.\n",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "The time when the token was created.\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "A description of the token.\n",
+                        "type": "string"
+                    },
+                    "expires": {
+                        "description": "The time when the token will expire.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "roleIds": {
+                        "description": "A list of role IDs associated with the token.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "tokenId": {
+                        "description": "The unique identifier of the Datafy token.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accountId",
+                    "createdAt",
+                    "description",
+                    "expires",
+                    "roleIds",
+                    "tokenId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:datafy/terraformConfig": {
             "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
             "inputs": {
                 "properties": {
@@ -123,7 +456,7 @@
                         "$ref": "#/provider"
                     }
                 },
-                "type": "pulumi:providers:xyz/terraformConfig",
+                "type": "pulumi:providers:datafy/terraformConfig",
                 "required": [
                     "__self__"
                 ]
@@ -139,37 +472,6 @@
                 },
                 "required": [
                     "result"
-                ],
-                "type": "object"
-            }
-        },
-        "xyz:index/getDataSource:getDataSource": {
-            "inputs": {
-                "description": "A collection of arguments for invoking getDataSource.\n",
-                "properties": {
-                    "sampleAttribute": {
-                        "type": "string"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "sampleAttribute"
-                ]
-            },
-            "outputs": {
-                "description": "A collection of values returned by getDataSource.\n",
-                "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
-                    "sampleAttribute": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "sampleAttribute",
-                    "id"
                 ],
                 "type": "object"
             }

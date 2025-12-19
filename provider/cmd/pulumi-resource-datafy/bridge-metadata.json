@@ -1,1 +1,43 @@
-{}
+{
+    "auto-aliasing": {
+        "resources": {
+            "datafy_account": {
+                "current": "datafy:index/account:Account",
+                "majorVersion": 1
+            },
+            "datafy_role_arn": {
+                "current": "datafy:index/roleArn:RoleArn",
+                "majorVersion": 1
+            },
+            "datafy_token": {
+                "current": "datafy:index/token:Token",
+                "majorVersion": 1,
+                "fields": {
+                    "role_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "datafy_account": {
+                "current": "datafy:index/getAccount:getAccount",
+                "majorVersion": 1
+            },
+            "datafy_role_arn": {
+                "current": "datafy:index/getRoleArn:getRoleArn",
+                "majorVersion": 1
+            },
+            "datafy_token": {
+                "current": "datafy:index/getToken:getToken",
+                "majorVersion": 1,
+                "fields": {
+                    "role_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {}
+}

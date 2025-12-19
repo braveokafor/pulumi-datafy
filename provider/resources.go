@@ -111,7 +111,7 @@ func Provider() tfbridge.ProviderInfo {
 		Version: version.Version,
 		// DisplayName is a way to be able to change the casing of the provider name when being
 		// displayed on the Pulumi registry
-		DisplayName: "",
+		DisplayName: "Datafy",
 		// Change this to your personal name (or a company name) that you would like to be shown in
 		// the Pulumi Registry if this package is published there.
 		Publisher: "Pulumi",
@@ -120,7 +120,7 @@ func Provider() tfbridge.ProviderInfo {
 		//
 		// You may host a logo on a domain you control or add an PNG logo (100x100) for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "",
+		LogoURL: "https://www.datafy.com/_next/static/media/datafyWhite.50dd47a1.svg",
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g. https://github.com/org/pulumi-provider-name/releases/download/v${VERSION}/
@@ -135,7 +135,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/braveokafor/pulumi-datafy",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this should
 		// match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:    "",
+		GitHubOrg:    "datafy-io",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
