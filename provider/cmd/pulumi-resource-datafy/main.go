@@ -15,17 +15,19 @@
 package main
 
 import (
+	"context"
 	_ "embed"
 
 	datafy "github.com/braveokafor/pulumi-datafy/provider"
-	"github.com/braveokafor/pulumi-datafy/provider/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 )
 
 //go:embed schema.json
 var pulumiSchema []byte
 
 func main() {
-	// Modify the path to point to the new provider
-	tfbridge.Main("datafy", version.Version, datafy.Provider(), pulumiSchema)
+	ctx := context.Background()
+
+	tfbridge.Main(ctx, "datafy", datafy.Provider(),
+		tfbridge.ProviderMetadata{PackageSchema: pulumiSchema})
 }
